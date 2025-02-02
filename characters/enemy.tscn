@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://doxtfe2mram6y"]
+
+[ext_resource type="Texture2D" uid="uid://lk23pbge576l" path="res://building/Wood 6 - 256x256.png" id="1_g1tyo"]
+[ext_resource type="Script" path="res://characters/controller_NPC.gd" id="1_tndvg"]
+[ext_resource type="Texture2D" uid="uid://blvrar4xw5gml" path="res://building/Wood 6 - 256x256 NORMAL.png" id="2_xjx5o"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3hg6y"]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_6nxhw"]
+resource_local_to_scene = true
+radial_segments = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wp6gk"]
+albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("1_g1tyo")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("2_xjx5o")
+
+[sub_resource type="BoxMesh" id="BoxMesh_kto81"]
+size = Vector3(0.8, 0.1, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5q78"]
+shading_mode = 0
+albedo_color = Color(0, 0.4, 0.4, 1)
+
+[node name="Enemy" type="CharacterBody3D" node_paths=PackedStringArray("navigation_agent")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+script = ExtResource("1_tndvg")
+navigation_agent = NodePath("NavigationAgent3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_3hg6y")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_6nxhw")
+surface_material_override/0 = SubResource("StandardMaterial3D_wp6gk")
+
+[node name="Eyes" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.405)
+mesh = SubResource("BoxMesh_kto81")
+surface_material_override/0 = SubResource("StandardMaterial3D_f5q78")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.55)
+light_color = Color(0, 0.8, 0.8, 1)
+light_energy = 8.0
+light_bake_mode = 0
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 2.0
+spot_angle = 30.0
+spot_angle_attenuation = 4.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

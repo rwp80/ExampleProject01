@@ -1,0 +1,604 @@
+[gd_scene load_steps=47 format=3 uid="uid://7j3yxd0cxb3x"]
+
+[ext_resource type="AudioStream" uid="uid://be06hrln5jox" path="res://misc/basic_calm_loop.ogg" id="1_5mywm"]
+[ext_resource type="Script" path="res://misc/controller_camera.gd" id="1_l3cm1"]
+[ext_resource type="Texture2D" uid="uid://dw330nkeo6o0h" path="res://building/Tile 10 - 256x256.png" id="2_f3f3q"]
+[ext_resource type="Texture2D" uid="uid://doc5jormnqc7p" path="res://building/Tile 10 - 256x256 NORMAL.png" id="3_blto5"]
+[ext_resource type="Texture2D" uid="uid://lk23pbge576l" path="res://building/Wood 6 - 256x256.png" id="4_hye2p"]
+[ext_resource type="Texture2D" uid="uid://blvrar4xw5gml" path="res://building/Wood 6 - 256x256 NORMAL.png" id="5_sg7gq"]
+[ext_resource type="PackedScene" uid="uid://bftvyyqy72jno" path="res://building/mid_wall.tscn" id="6_gtfjr"]
+[ext_resource type="PackedScene" uid="uid://ckmhyfnkdypei" path="res://building/wall.tscn" id="7_iwdwl"]
+[ext_resource type="PackedScene" uid="uid://ch3optotam1f1" path="res://decoration/goblin_head_on_spike.tscn" id="8_rrcam"]
+[ext_resource type="Material" uid="uid://bibm3wpdhaeu8" path="res://decoration/simple_banner.tres" id="9_svxxc"]
+[ext_resource type="PackedScene" uid="uid://b36la5371old2" path="res://characters/player.tscn" id="10_0w6qf"]
+[ext_resource type="Texture2D" uid="uid://bful04jtmlako" path="res://decoration/logo_robporter_960x540.png" id="10_hh1ly"]
+[ext_resource type="Script" path="res://characters/manager_NPC.gd" id="11_br3nb"]
+[ext_resource type="PackedScene" uid="uid://doxtfe2mram6y" path="res://characters/enemy.tscn" id="12_2vdhc"]
+[ext_resource type="PackedScene" uid="uid://dvv1dn3kte37c" path="res://characters/friend.tscn" id="13_3imoo"]
+[ext_resource type="LabelSettings" uid="uid://cw1voxr5kehic" path="res://misc/ending_text.tres" id="16_j5gac"]
+
+[sub_resource type="Environment" id="Environment_6yuvb"]
+ambient_light_source = 1
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.08
+reflected_light_source = 1
+tonemap_mode = 3
+tonemap_exposure = 7.0
+tonemap_white = 2.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_cjta0"]
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 0
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_ltd3p"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_u6asv"]
+vertices = PackedVector3Array(-12.5, 0.5, -9.5, -12.5, 0.5, 9.5, 12.5, 0.5, 9.5, 12.5, 0.5, -9.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mwpsu"]
+size = Vector2(26, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bdqh"]
+albedo_texture = ExtResource("2_f3f3q")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("3_blto5")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 32.0
+uv1_world_triplanar = true
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_n6hlf"]
+plane = Plane(0, -1, 0, 0)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_b6j54"]
+size = Vector2(26, 20)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_osdl4"]
+albedo_color = Color(0.74, 0.56092, 0.4144, 1)
+albedo_texture = ExtResource("4_hye2p")
+normal_enabled = true
+normal_scale = 2.0
+normal_texture = ExtResource("5_sg7gq")
+uv1_triplanar = true
+uv1_triplanar_sharpness = 32.0
+uv1_world_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_k2l77"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_0uk22"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_ug85r"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_xi17m"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_pcbw4"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_dyg1r"]
+resource_local_to_scene = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_nwbn4"]
+top_radius = 1.5
+bottom_radius = 1.5
+height = 3.0
+radial_segments = 32
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ew80i"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(0.5852, 0.156, 0.6, 0.247059)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6v7ng"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cehvt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hiqir"]
+albedo_color = Color(0.5, 0.5, 0.5, 1)
+albedo_texture = ExtResource("10_hh1ly")
+
+[sub_resource type="Animation" id="Animation_826rh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.85083, 1, 2.07906)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-2.8313, 1, 8.63894)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-4.08835, 1, 2.37356)]
+}
+
+[sub_resource type="Animation" id="Animation_dw2g0"]
+resource_name = "enemy_patrols"
+length = 30.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 7, 13, 17, 22, 26, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(1.85083, 1, 2.07906), Vector3(2.14841, 1, 8.8044), Vector3(0.630743, 1, 1.841), Vector3(2.95188, 1, 6.72133), Vector3(2.68406, 1, 1.4839), Vector3(0.0950966, 1, 5.76907), Vector3(1.85083, 1, 2.07906)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5, 12, 20, 25, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(-2.8313, 1, 8.63894), Vector3(-2.8313, 1, 8.63894), Vector3(-6.46179, 1, 1.88384), Vector3(-2.59324, 1, 2.35997), Vector3(-2.8313, 1, 8.63894), Vector3(-2.8313, 1, 8.63894)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6, 11, 18, 23, 27, 30),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector3(-4.08835, 1, 2.37356), Vector3(-6.20118, 1, 8.32519), Vector3(-9.35554, 1, 8.29543), Vector3(-7.92715, 1, 2.04622), Vector3(-4.80255, 1, 4.75421), Vector3(-6.05239, 1, 1.89743), Vector3(-4.08835, 1, 2.37356)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1tg4g"]
+_data = {
+"RESET": SubResource("Animation_826rh"),
+"enemy_patrols": SubResource("Animation_dw2g0")
+}
+
+[sub_resource type="GDScript" id="GDScript_jyno0"]
+resource_name = "friendzone"
+script/source = "extends Area3D
+
+@export var friend_escape_anim: AnimationPlayer
+
+var _already_escaped: bool = false
+
+func _ready() -> void:
+	self.body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body) -> void:
+	if not _already_escaped:
+		friend_escape_anim.play(\"friend_escape\")
+		_already_escaped = true
+"
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_0ila3"]
+height = 6.0
+radius = 3.5
+
+[sub_resource type="Animation" id="Animation_i8svu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetFriend:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1, -5)]
+}
+
+[sub_resource type="Animation" id="Animation_1kau8"]
+resource_name = "friend_escape"
+length = 12.0
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TargetFriend:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3, 7.5, 12),
+"transitions": PackedFloat32Array(0, 1, 0, 1, 1),
+"update": 0,
+"values": [Vector3(0, 1, -5), Vector3(-7, 1, -7), Vector3(-7, 1, -1), Vector3(-7, 1, -7), Vector3(12, 1, -9)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jqy43"]
+_data = {
+"RESET": SubResource("Animation_i8svu"),
+"friend_escape": SubResource("Animation_1kau8")
+}
+
+[sub_resource type="GDScript" id="GDScript_aivdo"]
+resource_name = "escapezone"
+script/source = "extends Area3D
+
+@export var ending_panel: Control
+
+func _ready() -> void:
+	self.body_entered.connect(_on_body_entered)
+
+func _on_body_entered(body) -> void:
+	ending_panel.show()
+	
+	var ending_tween = create_tween()
+	ending_tween.tween_interval(6.0)
+	await ending_tween.finished
+	
+	get_tree().quit()
+"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_axn27"]
+size = Vector3(2, 6, 2)
+
+[node name="ExampleRoot" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6yuvb")
+
+[node name="SimpleBackgroundMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_5mywm")
+volume_db = -20.0
+autoplay = true
+parameters/looping = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Movement: WASD"
+label_settings = SubResource("LabelSettings_cjta0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Camera: Tab"
+label_settings = SubResource("LabelSettings_cjta0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Quit: Escape"
+label_settings = SubResource("LabelSettings_cjta0")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CameraController" type="Node3D" parent="." node_paths=PackedStringArray("player", "camera")]
+script = ExtResource("1_l3cm1")
+player = NodePath("../Player")
+camera = [NodePath("SkyCam_Orth"), NodePath("SkyCam_Iso"), null]
+
+[node name="SkyCam_Orth" type="Camera3D" parent="CameraController"]
+transform = Transform3D(1, 0, 0, 0, 0.707106, 0.707106, 0, -0.707106, 0.707106, 0, 15, 12)
+projection = 1
+size = 24.0
+far = 256.0
+
+[node name="SkyCam_Iso" type="Camera3D" parent="CameraController"]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 12, 20, 12)
+projection = 1
+size = 24.0
+
+[node name="RoomOrigin" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="RoomOrigin"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomOrigin/Floor"]
+shape = SubResource("WorldBoundaryShape3D_ltd3p")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="RoomOrigin/Floor"]
+navigation_mesh = SubResource("NavigationMesh_u6asv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoomOrigin/Floor/NavigationRegion3D"]
+mesh = SubResource("PlaneMesh_mwpsu")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_7bdqh")
+
+[node name="Cieling" type="StaticBody3D" parent="RoomOrigin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoomOrigin/Cieling"]
+shape = SubResource("WorldBoundaryShape3D_n6hlf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RoomOrigin/Cieling"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_b6j54")
+surface_material_override/0 = SubResource("StandardMaterial3D_osdl4")
+
+[node name="Walls" type="Node3D" parent="RoomOrigin"]
+
+[node name="MidWall2" parent="RoomOrigin/Walls" instance=ExtResource("6_gtfjr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="MidWall_West" parent="RoomOrigin/Walls" instance=ExtResource("7_iwdwl")]
+transform = Transform3D(4, 0, 0, 0, 6, 0, 0, 0, 1, -11, 0, 0)
+mesh = SubResource("BoxMesh_k2l77")
+skeleton = NodePath("../..")
+
+[node name="MidWall_East" parent="RoomOrigin/Walls" instance=ExtResource("7_iwdwl")]
+transform = Transform3D(12, 0, 0, 0, 6, 0, 0, 0, 1, 7, 0, 0)
+mesh = SubResource("BoxMesh_0uk22")
+skeleton = NodePath("../..")
+
+[node name="Wall_West" parent="RoomOrigin/Walls" instance=ExtResource("7_iwdwl")]
+transform = Transform3D(2, 0, 0, 0, 6, 0, 0, 0, 20, -14, 0, 0)
+mesh = SubResource("BoxMesh_ug85r")
+skeleton = NodePath("../..")
+
+[node name="Wall_East" parent="RoomOrigin/Walls" instance=ExtResource("7_iwdwl")]
+transform = Transform3D(2, 0, 0, 0, 6, 0, 0, 0, 20, 14, 0, 0)
+mesh = SubResource("BoxMesh_xi17m")
+skeleton = NodePath("../..")
+
+[node name="Wall_North" parent="RoomOrigin/Walls" instance=ExtResource("7_iwdwl")]
+transform = Transform3D(30, 0, 0, 0, 6, 0, 0, 0, 2, 0, 0, -11)
+mesh = SubResource("BoxMesh_pcbw4")
+skeleton = NodePath("../..")
+
+[node name="Wall_South" parent="RoomOrigin/Walls" instance=ExtResource("7_iwdwl")]
+transform = Transform3D(30, 0, 0, 0, 6, 0, 0, 0, 2, 0, 0, 11)
+mesh = SubResource("BoxMesh_dyg1r")
+skeleton = NodePath("../..")
+
+[node name="Decorations" type="Node3D" parent="RoomOrigin"]
+
+[node name="GoblinHeadOnSpike" parent="RoomOrigin/Decorations" instance=ExtResource("8_rrcam")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -11.3676, 0, 8.09422)
+
+[node name="GoblinHeadOnSpike2" parent="RoomOrigin/Decorations" instance=ExtResource("8_rrcam")]
+transform = Transform3D(0.891624, 0, -0.452777, 0, 1, 0, 0.452777, 0, 0.891624, 11.6083, 0, 1.32667)
+
+[node name="LightTube" type="MeshInstance3D" parent="RoomOrigin/Decorations"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.5, 1.5, -8.5)
+mesh = SubResource("CylinderMesh_nwbn4")
+surface_material_override/0 = SubResource("StandardMaterial3D_ew80i")
+
+[node name="Banner" type="MeshInstance3D" parent="RoomOrigin/Decorations"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 2, 1.8, 9.9)
+mesh = SubResource("PlaneMesh_6v7ng")
+surface_material_override/0 = ExtResource("9_svxxc")
+
+[node name="Banner2" type="MeshInstance3D" parent="RoomOrigin/Decorations"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -1, 1.8, 9.9)
+mesh = SubResource("PlaneMesh_6v7ng")
+surface_material_override/0 = ExtResource("9_svxxc")
+
+[node name="Banner3" type="MeshInstance3D" parent="RoomOrigin/Decorations"]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, -4, 1.8, 9.9)
+mesh = SubResource("PlaneMesh_6v7ng")
+surface_material_override/0 = ExtResource("9_svxxc")
+
+[node name="Banner4" type="MeshInstance3D" parent="RoomOrigin/Decorations"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -4, 1.8, 0.6)
+mesh = SubResource("PlaneMesh_6v7ng")
+surface_material_override/0 = ExtResource("9_svxxc")
+
+[node name="Banner5" type="MeshInstance3D" parent="RoomOrigin/Decorations"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -1, 1.8, 0.6)
+mesh = SubResource("PlaneMesh_6v7ng")
+surface_material_override/0 = ExtResource("9_svxxc")
+
+[node name="Banner6" type="MeshInstance3D" parent="RoomOrigin/Decorations"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 2, 1.8, 0.6)
+mesh = SubResource("PlaneMesh_6v7ng")
+surface_material_override/0 = ExtResource("9_svxxc")
+
+[node name="DevBanner" type="MeshInstance3D" parent="RoomOrigin/Decorations"]
+transform = Transform3D(-0.5, -2.18557e-08, 9.55343e-16, 0, -1.09278e-08, -0.25, 4.37114e-08, -0.25, 1.09278e-08, 7, 1.75, -0.6)
+mesh = SubResource("PlaneMesh_cehvt")
+surface_material_override/0 = SubResource("StandardMaterial3D_hiqir")
+
+[node name="Lighting" type="Node3D" parent="RoomOrigin"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="RoomOrigin/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 2.5, -5)
+light_bake_mode = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="RoomOrigin/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 2.5, -5)
+light_bake_mode = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="RoomOrigin/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 1.5, 7)
+light_color = Color(1, 0.5, 0.725, 1)
+light_energy = 0.25
+light_bake_mode = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="RoomOrigin/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6238, 1.5, 1.99352)
+light_color = Color(1, 0.5, 0.725, 1)
+light_energy = 0.25
+light_bake_mode = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D6" type="OmniLight3D" parent="RoomOrigin/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 1.5, 2)
+light_color = Color(0.65, 0.5, 1, 1)
+light_energy = 0.25
+light_bake_mode = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+
+[node name="OmniLight3D7" type="OmniLight3D" parent="RoomOrigin/Lighting"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5, 1.5, 7)
+light_color = Color(1, 0.608333, 0.5, 1)
+light_energy = 0.25
+light_bake_mode = 1
+omni_range = 6.0
+omni_attenuation = 2.0
+
+[node name="Player" parent="." instance=ExtResource("10_0w6qf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 1, 8)
+
+[node name="NPCManager" type="Node3D" parent="."]
+script = ExtResource("11_br3nb")
+
+[node name="EnemyPatrols" type="AnimationPlayer" parent="NPCManager"]
+libraries = {
+"": SubResource("AnimationLibrary_1tg4g")
+}
+autoplay = "enemy_patrols"
+
+[node name="Enemy1" parent="NPCManager" node_paths=PackedStringArray("navigation_target") instance=ExtResource("12_2vdhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8937, 1, 8.84951)
+navigation_target = NodePath("../Target1")
+
+[node name="Target1" type="Node3D" parent="NPCManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85083, 1, 2.07906)
+
+[node name="Enemy2" parent="NPCManager" node_paths=PackedStringArray("navigation_target") instance=ExtResource("12_2vdhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.74471, 1, 2.89523)
+navigation_target = NodePath("../Target2")
+
+[node name="Target2" type="Node3D" parent="NPCManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8313, 1, 8.63894)
+
+[node name="Enemy3" parent="NPCManager" node_paths=PackedStringArray("navigation_target") instance=ExtResource("12_2vdhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.551, 1, 2.78)
+navigation_target = NodePath("../Target3")
+
+[node name="Target3" type="Node3D" parent="NPCManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.08835, 1, 2.37356)
+
+[node name="FriendZone" type="Area3D" parent="NPCManager" node_paths=PackedStringArray("friend_escape_anim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+collision_mask = 2
+script = SubResource("GDScript_jyno0")
+friend_escape_anim = NodePath("../FriendEscape")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCManager/FriendZone"]
+shape = SubResource("CylinderShape3D_0ila3")
+
+[node name="FriendEscape" type="AnimationPlayer" parent="NPCManager"]
+libraries = {
+"": SubResource("AnimationLibrary_jqy43")
+}
+
+[node name="Friend" parent="NPCManager" node_paths=PackedStringArray("navigation_target") instance=ExtResource("13_3imoo")]
+transform = Transform3D(-0.587785, 0, 0.809017, 0, 1, 0, -0.809017, 0, -0.587785, 0, 1, -5)
+navigation_target = NodePath("../TargetFriend")
+
+[node name="TargetFriend" type="Node3D" parent="NPCManager"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5)
+
+[node name="EscapeZone" type="Area3D" parent="NPCManager" node_paths=PackedStringArray("ending_panel")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 0, -9)
+collision_mask = 4
+script = SubResource("GDScript_aivdo")
+ending_panel = NodePath("EndingPanel")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NPCManager/EscapeZone"]
+shape = SubResource("BoxShape3D_axn27")
+
+[node name="EndingPanel" type="Control" parent="NPCManager/EscapeZone"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="NPCManager/EscapeZone/EndingPanel"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Escaped" type="Label" parent="NPCManager/EscapeZone/EndingPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 10
+text = "Your friend escaped!"
+label_settings = ExtResource("16_j5gac")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LabelBlank" type="Label" parent="NPCManager/EscapeZone/EndingPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.5
+
+[node name="Gonclaturationg" type="Label" parent="NPCManager/EscapeZone/EndingPanel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 2
+text = "Congratulations!"
+label_settings = ExtResource("16_j5gac")
+horizontal_alignment = 1
+vertical_alignment = 1

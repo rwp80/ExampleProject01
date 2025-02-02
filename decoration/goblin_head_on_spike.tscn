@@ -1,0 +1,19 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch3optotam1f1"]
+
+[ext_resource type="PackedScene" uid="uid://eq6660a5qcbv" path="res://decoration/GoblinHeadOnSpike.glb" id="1_pmfh5"]
+[ext_resource type="Texture2D" uid="uid://d0qbu0d5g65xr" path="res://decoration/GoblinFace.png" id="2_iuscp"]
+[ext_resource type="Texture2D" uid="uid://bk1565q1w4in5" path="res://decoration/Spike.png" id="3_6ssio"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1rv2c"]
+albedo_texture = ExtResource("2_iuscp")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gv14n"]
+albedo_texture = ExtResource("3_6ssio")
+
+[node name="GoblinHeadOnSpike" instance=ExtResource("1_pmfh5")]
+
+[node name="GoblinFace" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1rv2c")
+
+[node name="Spike" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_gv14n")

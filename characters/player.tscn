@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://b36la5371old2"]
+
+[ext_resource type="Script" path="res://characters/controller_player.gd" id="1_5cyxw"]
+[ext_resource type="Texture2D" uid="uid://btduhnfdvacyl" path="res://characters/Roof 9 - 256x256.png" id="2_b7611"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5j34q"]
+resource_local_to_scene = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_a3ovx"]
+resource_local_to_scene = true
+radial_segments = 32
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7x2rv"]
+albedo_color = Color(0.4, 0.498039, 1, 1)
+albedo_texture = ExtResource("2_b7611")
+
+[sub_resource type="BoxMesh" id="BoxMesh_1au8n"]
+resource_local_to_scene = true
+size = Vector3(0.8, 0.1, 0.25)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ygke6"]
+shading_mode = 0
+albedo_color = Color(0.56, 0.6, 0, 1)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("basis_iso", "player_camera")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+collision_layer = 3
+floor_stop_on_slope = false
+script = ExtResource("1_5cyxw")
+basis_iso = NodePath("Basis_Iso")
+player_camera = NodePath("PlayerCam")
+
+[node name="Basis_Iso" type="Node3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_5j34q")
+
+[node name="Body" type="MeshInstance3D" parent="."]
+layers = 2
+mesh = SubResource("CapsuleMesh_a3ovx")
+surface_material_override/0 = SubResource("StandardMaterial3D_7x2rv")
+
+[node name="Eyes" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.405)
+layers = 2
+mesh = SubResource("BoxMesh_1au8n")
+surface_material_override/0 = SubResource("StandardMaterial3D_ygke6")
+
+[node name="PlayerCam" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+cull_mask = 1048573
+fov = 90.0
+far = 256.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, -0.55)
+light_color = Color(0.773333, 0.8, 0.4, 1)
+light_energy = 8.0
+light_bake_mode = 0
+shadow_enabled = true
+spot_range = 10.0
+spot_attenuation = 2.0
+spot_angle = 60.0
+spot_angle_attenuation = 4.0

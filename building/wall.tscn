@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckmhyfnkdypei"]
+
+[ext_resource type="Script" path="res://building/wall_convert_child_scales.gd" id="1_o3xbk"]
+[ext_resource type="Material" uid="uid://7scbb8d37ovs" path="res://building/wall.tres" id="1_sq33f"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_uc2gm"]
+resource_local_to_scene = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q4n84"]
+resource_local_to_scene = true
+
+[node name="Wall" type="MeshInstance3D" node_paths=PackedStringArray("static_body", "collision_shape")]
+mesh = SubResource("BoxMesh_uc2gm")
+surface_material_override/0 = ExtResource("1_sq33f")
+script = ExtResource("1_o3xbk")
+static_body = NodePath("StaticBody3D")
+collision_shape = NodePath("StaticBody3D/CollisionShape3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("BoxShape3D_q4n84")

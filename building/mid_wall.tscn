@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bftvyyqy72jno"]
+
+[ext_resource type="PackedScene" uid="uid://cw7g544og3ci2" path="res://building/MidWall.glb" id="1_oexsl"]
+[ext_resource type="Material" uid="uid://7scbb8d37ovs" path="res://building/wall.tres" id="2_3iwpy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mc54u"]
+resource_local_to_scene = true
+size = Vector3(6.75, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dagci"]
+resource_local_to_scene = true
+size = Vector3(0.75, 6, 1)
+
+[node name="MidWall2" instance=ExtResource("1_oexsl")]
+
+[node name="MidWall" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_3iwpy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.625, 0, 0)
+shape = SubResource("BoxShape3D_mc54u")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.625, 0, 0)
+shape = SubResource("BoxShape3D_dagci")
