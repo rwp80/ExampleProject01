@@ -9,5 +9,5 @@ of a prospective employer.
 In-browser playable version at:
 https://robporter.itch.io/example-project-01
 
-If you are interested in working with me, please check the related
-contact links where you viewed/obtained this project from.
+Tips are kindly accepted at:
+https://ko-fi.com/robporter
