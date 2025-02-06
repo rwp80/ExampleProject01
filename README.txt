@@ -11,3 +11,6 @@ https://robporter.itch.io/example-project-01
 
 Tips are kindly accepted at:
 https://ko-fi.com/robporter
+
+Godot developers are welcome to clone this project for their own purposes.
+Thanks, and enjoy!
